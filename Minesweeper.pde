@@ -24,7 +24,10 @@ void setup ()
 }
 public void setBombs()
 {
-    
+    /*row=Math.random()*21;
+    col=Math,random()*21;
+    buttons[row][col];
+    bombs.add()*/
     //your code
 }
 
@@ -76,11 +79,21 @@ public class MSButton
         return clicked;
     }
     // called by manager
-    
     public void mousePressed () 
     {
         clicked = true;
-        //your code here
+        /*if(marked == true)
+        {
+          marked = false;
+          if(isValid(r,c-1) && buttons[r][c-1].isMarked())
+            buttons[r][c-1].mousePressed();
+          if(isValid(r,c+1) && buttons[r][c+1].isMarked())
+            buttons[r][c+1].mousePressed();
+          if(isValid(r+1,c) && buttons[r+1][c].isMarked())
+            buttons[r+1][c].mousePressed();
+          if(isValid(r-1,c) && buttons[r-1][c].isMarked())
+            buttons[r-1][c].mousePressed();*/
+                //your code here
     }
 
     public void draw () 
@@ -104,8 +117,9 @@ public class MSButton
     }
     public boolean isValid(int r, int c)
     {
-        //your code here
-        return false;
+        if(r>-1 && r<10 && c>-1 && c<10)
+            return true;
+                return false;
     }
     public int countBombs(int row, int col)
     {
