@@ -26,13 +26,18 @@ void setup ()
 }
 public void setBombs()
 {  
-    int row=(int)(Math.random()*NUM_ROWS) ;
-    int col=(int)(Math.random()*NUM_COLS);
-    if(!bombs.contains(buttons[row][col]))
-    {
-        bombs.add(buttons[row][col]);
-        setBombs();
-    }
+    //for(int b =0; b<bombCount; b++)
+    //{
+        int row=(int)(Math.random()*NUM_ROWS) ;
+        int col=(int)(Math.random()*NUM_COLS);
+        if(!bombs.contains(buttons[row][col]))
+        {
+            bombs.add(buttons[row][col]);
+            setBombs();
+        }
+        //else 
+            //b--
+    //}   
 }
 // 30 bombs
 public void draw ()
@@ -43,7 +48,10 @@ public void draw ()
 }
 public boolean isWon()
 {
-    //your code here
+    /*for(int row=0; row<NUM_ROWS; row++)
+        for(int col=0; col<NUM_COLS; col++)
+            if(bombs.contains[row][col])
+                return false;*/
     return false;
 }
 public void displayLosingMessage()
@@ -77,17 +85,20 @@ public class MSButton
     public boolean isMarked()
     {
         return marked;
+        //flags the button
     }
-    public boolean isClicked()
+    public boolean isClicked() 
     {
         return clicked;
+        //makes button light gray background
     }
     // called by manager
     public void mousePressed () 
     {
         clicked = true;
-        if(keyPressed== true)
-            marked=true; //marked=flag
+        if(mouseButton== RIGHT &&label.equals(""))
+            {marked=!marked;
+            clicked = false;}
         else if(bombs.contains(this))
             displayLosingMessage();
         else if(countBombs(r,c)>0)
@@ -117,6 +128,7 @@ public class MSButton
 
           if(isValid(r+1, c+1) && !buttons[r+1][c+1].isClicked())
             buttons[r+1][c+1].mousePressed();
+
             /*for(int rr = -1; rr < 2; rr++) 
             {
                 for(int cc = -1; cc < 2; cc++) 
@@ -135,7 +147,6 @@ public class MSButton
              fill(255,0,0);
         else if(clicked) {
             fill(200);
-            //text(x,y,countBombs(r,c)); deal with it later
         }
         else 
             fill( 100 );
@@ -184,4 +195,8 @@ public class MSButton
         return numBombs;
     }
 }
+
+
+
+
 
