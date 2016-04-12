@@ -21,23 +21,21 @@ void setup ()
       for(int col =0; col<20; col++)
         buttons[row][col]= new MSButton(row,col);
     }
-    setBombs();
-
+    for(int i=0; i<50; i++) //50 bombs
+        setBombs();
 }
 public void setBombs()
 {  
-    //for(int b =0; b<bombCount; b++)
-    //{
         int row=(int)(Math.random()*NUM_ROWS) ;
         int col=(int)(Math.random()*NUM_COLS);
         if(!bombs.contains(buttons[row][col]))
         {
             bombs.add(buttons[row][col]);
-            setBombs();
+            
+        } 
+        else {
+            setBombs();           
         }
-        //else 
-            //b--
-    //}   
 }
 // 30 bombs
 public void draw ()
@@ -56,10 +54,51 @@ public boolean isWon()
 }
 public void displayLosingMessage()
 {
-    //your code here
+    
+    for(int i=0; i<bombs.size(); i++)
+    {
+        (bombs.get(i)).setClicked(true);
+    }
+    buttons[2][5].setLabel("Y");
+    buttons[2][6].setLabel("O");
+    buttons[2][7].setLabel("U");
+    buttons[2][8].setLabel("");
+    buttons[2][9].setLabel("L");
+    buttons[2][10].setLabel("O");
+    buttons[2][11].setLabel("S");
+    buttons[2][12].setLabel("E");
+
+    buttons[3][4].setLabel("T");
+    buttons[3][5].setLabel("R");
+    buttons[3][6].setLabel("Y");
+    buttons[3][7].setLabel("");
+    buttons[3][8].setLabel("A");
+    buttons[3][9].setLabel("G");
+    buttons[3][10].setLabel("A");
+    buttons[3][11].setLabel("I");
+    buttons[3][12].setLabel("N");
+    buttons[3][13].setLabel("!");
 }
 public void displayWinningMessage()
 {
+    buttons[2][8].setLabel("W");
+    buttons[2][9].setLabel("I");
+    buttons[2][10].setLabel("N");
+    buttons[2][11].setLabel("N");
+    buttons[2][12].setLabel("E");
+    buttons[2][13].setLabel("R");
+
+    buttons[3][8].setLabel("P");
+    buttons[3][9].setLabel("L");
+    buttons[3][10].setLabel("A");
+    buttons[3][11].setLabel("Y");
+    buttons[3][12].setLabel("");
+    buttons[3][13].setLabel("A");
+    buttons[3][14].setLabel("G");
+    buttons[3][15].setLabel("A");
+    buttons[3][16].setLabel("I");
+    buttons[3][17].setLabel("N");
+
     //your code here
 }
 
@@ -90,13 +129,17 @@ public class MSButton
     public boolean isClicked() 
     {
         return clicked;
-        //makes button light gray background
+        //makes button light gray background/ OPENS BUTTON
+    }
+    public void setClicked(boolean nClick)
+    {
+        clicked=nClick;
     }
     // called by manager
     public void mousePressed () 
     {
         clicked = true;
-        if(mouseButton== RIGHT &&label.equals(""))
+        if(mouseButton== RIGHT && label.equals(""))
             {marked=!marked;
             clicked = false;}
         else if(bombs.contains(this))
