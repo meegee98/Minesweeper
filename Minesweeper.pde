@@ -37,20 +37,26 @@ public void setBombs()
             setBombs();           
         }
 }
-// 30 bombs
+
 public void draw ()
 {
-    background( 0 );
+    
+  background( 0 );
     if(isWon())
         displayWinningMessage();
 }
 public boolean isWon()
 {
-    /*for(int row=0; row<NUM_ROWS; row++)
-        for(int col=0; col<NUM_COLS; col++)
-            if(bombs.contains[row][col])
-                return false;*/
-    return false;
+    for(int y=0; y<NUM_ROWS; y++)
+    {
+      for(int x=0; x<NUM_COLS; x++)
+      {
+       if(!buttons[y][x].isMarked() && !buttons[y][x].isClicked())
+         return false;
+      }
+      
+    }
+       return true;
 }
 public void displayLosingMessage()
 {
@@ -81,25 +87,37 @@ public void displayLosingMessage()
 }
 public void displayWinningMessage()
 {
-    buttons[2][8].setLabel("W");
-    buttons[2][9].setLabel("I");
-    buttons[2][10].setLabel("N");
-    buttons[2][11].setLabel("N");
-    buttons[2][12].setLabel("E");
-    buttons[2][13].setLabel("R");
+    buttons[2][2].setLabel("Y");
+    buttons[2][3].setLabel("O");
+    buttons[2][4].setLabel("U");
+    buttons[2][5].setLabel("'");
+    buttons[2][6].setLabel("R");
+    buttons[2][7].setLabel("E");
+    
+    buttons[2][8].setLabel(""); 
+    buttons[2][9].setLabel("A"); 
+    buttons[2][10].setLabel(""); 
+    
+    buttons[2][11].setLabel("W");
+    buttons[2][12].setLabel("I");
+    buttons[2][13].setLabel("N");
+    buttons[2][14].setLabel("N");
+    buttons[2][15].setLabel("E");
+    buttons[2][16].setLabel("R");
+    buttons[2][17].setLabel("!");  
 
-    buttons[3][8].setLabel("P");
-    buttons[3][9].setLabel("L");
-    buttons[3][10].setLabel("A");
-    buttons[3][11].setLabel("Y");
-    buttons[3][12].setLabel("");
-    buttons[3][13].setLabel("A");
-    buttons[3][14].setLabel("G");
-    buttons[3][15].setLabel("A");
-    buttons[3][16].setLabel("I");
-    buttons[3][17].setLabel("N");
-
-    //your code here
+    buttons[3][4].setLabel("P");
+    buttons[3][5].setLabel("L");
+    buttons[3][6].setLabel("A");
+    buttons[3][7].setLabel("Y");
+    buttons[3][8].setLabel("");
+    buttons[3][9].setLabel("A");
+    buttons[3][10].setLabel("G");
+    buttons[3][11].setLabel("A");
+    buttons[3][12].setLabel("I");
+    buttons[3][13].setLabel("N");
+    buttons[3][14].setLabel("?");
+    buttons[3][15].setLabel("?");
 }
 
 public class MSButton
@@ -238,8 +256,3 @@ public class MSButton
         return numBombs;
     }
 }
-
-
-
-
-
