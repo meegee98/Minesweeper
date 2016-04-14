@@ -3,7 +3,7 @@ private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> bombs= new ArrayList <MSButton> (); //ArrayList of just the minesweeper buttons that are mined
 public final static int NUM_ROWS = 20;
 public final static int NUM_COLS=20;
-private boolean endGame=false;
+public boolean gameover=false;
 
 void setup ()
 {
@@ -60,7 +60,7 @@ public boolean isWon()
 }
 public void displayLosingMessage()
 {
-    endGame=true;
+    gameover=true;
     for(int i=0; i<bombs.size(); i++)
     {
         (bombs.get(i)).setClicked(true);
