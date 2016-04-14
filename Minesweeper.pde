@@ -3,7 +3,7 @@ private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> bombs= new ArrayList <MSButton> (); //ArrayList of just the minesweeper buttons that are mined
 public final static int NUM_ROWS = 20;
 public final static int NUM_COLS=20;
-private boolean gameOver=false;
+private boolean gameover=false;
 
 void setup ()
 {
@@ -13,8 +13,6 @@ void setup ()
     // make the manager
     Interactive.make( this );
     
-    //your code to declare and initialize buttons goes here
-
     buttons= new MSButton[NUM_ROWS][NUM_COLS];
     for(int row=0; row<20; row++)
     {
@@ -31,7 +29,6 @@ public void setBombs()
         if(!bombs.contains(buttons[row][col]))
         {
             bombs.add(buttons[row][col]);
-            
         } 
         else {
             setBombs();           
@@ -40,7 +37,6 @@ public void setBombs()
 
 public void draw ()
 {
-    
   background( 0 );
     if(isWon())
         displayWinningMessage();
@@ -54,13 +50,12 @@ public boolean isWon()
        if(!buttons[y][x].isMarked() && !buttons[y][x].isClicked())
          return false;
       }
-      
     }
        return true;
 }
 public void displayLosingMessage()
 {
-    gameOver=true;
+    gameover=true;
     for(int i=0; i<bombs.size(); i++)
     {
         (bombs.get(i)).setClicked(true);
@@ -87,7 +82,7 @@ public void displayLosingMessage()
 }
 public void displayWinningMessage()
 {
-    gameOver=true;
+    gameover=true;
     buttons[2][2].setLabel("Y");
     buttons[2][3].setLabel("O");
     buttons[2][4].setLabel("U");
